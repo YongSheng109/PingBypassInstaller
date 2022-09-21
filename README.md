@@ -1,6 +1,12 @@
 # Pingbypass Installer
 A script to install and configure 3arthh4ck Pingbypass as quickly as possible on NeverInstall or other linux vps that supports ldd 2.29 & 2gb+ ram.
 
+# Tutorial video [Outdated] | Make the vps and type the code 
+https://youtu.be/YwN65p2u-Kg
+
+# My channel
+https://www.youtube.com/channel/UCXkEsL3DzkVsYXdz7dbcBtg/
+
 ## Usage
 ```
 cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/main/pingbypass.sh -o pingbypass.sh 
