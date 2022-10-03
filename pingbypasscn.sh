@@ -1,4 +1,5 @@
 #set some variables
+apt install python3-pip -y
 apt install iproute2 -y
 apt install screen -y
 clear
@@ -44,6 +45,7 @@ if [ ! -d "$javadir" ]; then
 	wget -q https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	echo 'Java下载完成!'
+  clear
 fi
 
 #make config files, directories and input relevant configs if they dont exist
@@ -80,9 +82,10 @@ fi
 if [ ! -d "$mcdir" ]; then
 	$javadir/java -jar headlessmc-launcher-1.5.2.jar --command download 1.12.2
 	$javadir/java -jar headlessmc-launcher-1.5.2.jar --command forge 1.12.2
+	clear
 fi
 	$javadir/java -jar headlessmc-launcher-1.5.2.jar --command login $email $password
-
+	clear
 
 #download playit.gg if it hasnt been already
 if [ ! -d "$playitcheck" ]; then
@@ -100,10 +103,11 @@ chmod +x pb
 chmod +x playit
 fi
 
-sleep 3
 clear
-
-screen -S server -d -m ./pb
-screen -S server -d -m ./playit
-screen -S afk -d -m ./startAfk #Starting AFK app aka bpytop.
+cd ~ && git clone https://github.com/carrot69/keep-presence.git
+pip3 install pynput
+clear
+screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
+screen -S playit -d -m ./playit
+screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
 echo '您的 Internal ip 和 Port (不是您的PingBypass IP)' && ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
