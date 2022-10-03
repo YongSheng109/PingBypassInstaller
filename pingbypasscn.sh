@@ -1,5 +1,4 @@
 #set some variables
-apt install python3-pip
 apt install iproute2 -y
 apt install screen -y
 clear
@@ -23,6 +22,7 @@ echo  '
 ░░░╚═╝░░░░╚════╝░╚═╝░░╚══╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░░░░╚═╝░░╚═╝╚═════╝░╚═════╝░             
 '
 sleep 2
+echo ''
 echo "如果您在登录 HeadlessMC 时遇到错误, 请重新运行脚本。"
 sleep 1
 
@@ -40,8 +40,10 @@ read -p '您的Minecraft账号密码? >> ' password
 
 #install java if it hasnt been installed before
 if [ ! -d "$javadir" ]; then
-	wget https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
+	echo '正在下载Java...'
+	wget -q https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
+	echo 'Java下载完成!'
   clear
 fi
 
@@ -66,11 +68,13 @@ fi
 
 #download mods and hmc and move them to the proper places if not already downloaded
 if [ ! -d "$modsdir" ]; then
+	echo '正在下载模组...'
 	mkdir ~/.minecraft/mods -p
-	wget https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.4/3arthh4ck-1.8.4-release.jar && mv 3arthh4ck-1.8.4-release.jar ~/.minecraft/mods
-	wget https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
-	wget https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
-	wget https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
+	wget -q https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.4/3arthh4ck-1.8.4-release.jar && mv 3arthh4ck-1.8.4-release.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
+	echo '模组下载完成!'
 fi
 
 #download minecraft and forge if not already done and login
@@ -83,7 +87,9 @@ fi
 
 #download playit.gg if it hasnt been already
 if [ ! -d "$playitcheck" ]; then
-	wget wget -q "https://playit.gg/downloads/playit-0.8.1-beta" -O playit && chmod +x playit
+	echo '正在下载Playit...'
+	wget -q https://playit.gg/downloads/playit-0.8.1-beta -O playit && chmod +x playit
+	echo 'Playit下载完成!'
 fi
 
 #make launch file for pb server if it hasnt been made already
@@ -96,12 +102,8 @@ chmod +x playit
 fi
 
 clear
-git clone https://github.com/carrot69/keep-presence.git
-cd keep-presence
-pip3 install pynput
-clear
-cd ~ && screen -S pb -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
-cd ~ && screen -S playit -d -m ./playit
-cd ~ && screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30
-clear
-ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
+
+screen -S server -d -m ./pb
+screen -S server -d -m ./playit
+screen -S afk -d -m ./startAfk #Starting AFK app aka bpytop.
+echo '您的 Internal ip 和 Port (不是您的PingBypass IP)' && ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
