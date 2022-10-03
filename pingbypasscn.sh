@@ -44,7 +44,6 @@ if [ ! -d "$javadir" ]; then
 	wget -q https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	echo 'Java下载完成!'
-  clear
 fi
 
 #make config files, directories and input relevant configs if they dont exist
@@ -101,6 +100,7 @@ chmod +x pb
 chmod +x playit
 fi
 
+sleep 3
 clear
 
 screen -S server -d -m ./pb
