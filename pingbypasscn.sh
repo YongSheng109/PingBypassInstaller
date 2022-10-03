@@ -1,4 +1,5 @@
 #set some variables
+apt install python3-pip
 apt install iproute2 -y
 apt install screen -y
 clear
@@ -95,12 +96,10 @@ chmod +x playit
 fi
 
 clear
-echo '打此指令来开启一个新的屏幕  "screen -S PingBypass", 在这个屏幕, 打 ./pb 来开启您的PingBypass, 您应该看到 1.12.2 和 Forge 1.12.2'
-echo ''
-echo 'Forge 1.12.2 左边应该会有一个号码 (一般来说会是 0) 如果是0, 打出 "launch 0 -id" , 如果不是0, 打出 "launch 1 -id"'
-echo ''
-echo '之后, ctrl + a + d 来退出此屏幕, 现在, 你需要打出 "screen -S Port", 开启新的屏幕之后, 打出 ./playit'
-echo ''
-echo '这里的话, 我解释不了, 所以您需要看影片, 跟着我的步骤'
-echo ''
-ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
+git clone https://github.com/carrot69/keep-presence.git
+cd keep-presence
+pip3 install pynput
+clear
+screen -S pb -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
+screen -S playit -d -m ./playit
+screen -S afk -d -m src/keep-presence.py --seconds 30
