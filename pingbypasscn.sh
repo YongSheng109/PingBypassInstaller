@@ -75,6 +75,7 @@ if [ ! -d "$modsdir" ]; then
 	wget -q https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
+	wget -q https://github.com/lordofwizard/mcserver/raw/main/startAfk
 	echo '模组下载完成!'
 	sleep 2
 	clear
@@ -113,5 +114,6 @@ pip3 install pynput
 clear
 screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
 screen -S playit -d -m ./playit
+screen -S afk2 -d -m ./startAfk
 screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
 echo '您的 Internal ip 和 Port (不是您的PingBypass IP)' && ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
