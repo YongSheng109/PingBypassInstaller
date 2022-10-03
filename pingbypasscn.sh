@@ -103,3 +103,5 @@ clear
 cd ~ && screen -S pb -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
 cd ~ && screen -S playit -d -m ./playit
 cd ~ && screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30
+clear
+ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
