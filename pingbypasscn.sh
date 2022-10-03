@@ -76,6 +76,7 @@ if [ ! -d "$modsdir" ]; then
 	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
 	echo '模组下载完成!'
+	sleep 2
 fi
 
 #download minecraft and forge if not already done and login
@@ -92,6 +93,8 @@ if [ ! -d "$playitcheck" ]; then
 	echo '正在下载Playit...'
 	wget -q https://playit.gg/downloads/playit-0.8.1-beta -O playit && chmod +x playit
 	echo 'Playit下载完成!'
+	sleep 2
+	clear
 fi
 
 #make launch file for pb server if it hasnt been made already
