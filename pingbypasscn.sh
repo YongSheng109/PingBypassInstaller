@@ -100,6 +100,6 @@ git clone https://github.com/carrot69/keep-presence.git
 cd keep-presence
 pip3 install pynput
 clear
-screen -S pb -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
-screen -S playit -d -m ./playit
-screen -S afk -d -m src/keep-presence.py --seconds 30
+cd ~ && screen -S pb -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
+cd ~ && screen -S playit -d -m ./playit
+cd ~ && screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30
