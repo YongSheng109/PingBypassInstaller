@@ -13,6 +13,11 @@ cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/
 sh pingbypass.sh
 ```
 
+## Usage-Chinese
+```
+cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/main/pingbypasscn.sh -o pingbypasscn.sh & sh pingbypasscn.sh
+```
+
 ## Credits
 HAV0X1014 for making the 1st generation of this code
 
