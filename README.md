@@ -15,7 +15,8 @@ sh pingbypass.sh
 
 ## Usage-Chinese
 ```
-cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/main/pingbypasscn.sh -o pingbypasscn.sh & sh pingbypasscn.sh
+cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/main/pingbypasscn.sh -o pingbypasscn.sh 
+sh pingbypasscn.sh
 ```
 
 ## Credits
