@@ -1,4 +1,5 @@
 #set some variables
+apt install python3-pip -y
 apt install iproute2 -y
 apt install screen -y
 clear
@@ -22,25 +23,28 @@ echo  '
 ░░░╚═╝░░░░╚════╝░╚═╝░░╚══╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░░░░╚═╝░░╚═╝╚═════╝░╚═════╝░             
 '
 sleep 2
-echo "If you get an error while logging into HeadlessMC, re-run the script."
+echo ''
+echo "Rerun this script if u have problem in HeadlessMc"
 sleep 1
 
 #make sure this is being run in the home dir and not anywhere else
 if [ $PWD != ~ ]; then
-	echo "**This script MUST be run in the home directory!**\n**This script will NOT work elsewhere!**"
+	echo "This script must be run at ~ | cd ~ | if you're not in ~"
 	exit 0
 fi
 
 #ask for user input for ip, port, password, and OS type
-read -p 'What port would you like to use for Pingbypass? >> ' openport
-read -p 'What password would you like the Pingbypass server to use? >> ' pass
-read -p 'Input the email of the Minecraft account you want on the server. >> ' email
-read -p 'Input the password of the Minecraft account you want on the server. >> ' password
+read -p 'Your Internal Port? >> ' openport
+read -p 'Your PingBypass Password? >> ' pass
+read -p 'Your Minecraft Account Mail? >> ' email
+read -p 'Your Minecraft Account Password? >> ' password
 
 #install java if it hasnt been installed before
 if [ ! -d "$javadir" ]; then
-	wget https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
+	echo 'Downloading Java...'
+	wget -q https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
+	echo 'Java downloaded!'
   clear
 fi
 
@@ -65,24 +69,34 @@ fi
 
 #download mods and hmc and move them to the proper places if not already downloaded
 if [ ! -d "$modsdir" ]; then
+	echo 'Downloading mods...'
 	mkdir ~/.minecraft/mods -p
-	wget https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.4/3arthh4ck-1.8.4-release.jar && mv 3arthh4ck-1.8.4-release.jar ~/.minecraft/mods
-	wget https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
-	wget https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
-	wget https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
+	wget -q https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.4/3arthh4ck-1.8.4-release.jar && mv 3arthh4ck-1.8.4-release.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
+	wget -q https://github.com/lordofwizard/mcserver/raw/main/startAfk
+	echo 'Mods downloaded!'
+	sleep 2
+	clear
 fi
 
 #download minecraft and forge if not already done and login
 if [ ! -d "$mcdir" ]; then
 	$javadir/java -jar headlessmc-launcher-1.5.2.jar --command download 1.12.2
 	$javadir/java -jar headlessmc-launcher-1.5.2.jar --command forge 1.12.2
+	clear
 fi
 	$javadir/java -jar headlessmc-launcher-1.5.2.jar --command login $email $password
-
+	clear
 
 #download playit.gg if it hasnt been already
 if [ ! -d "$playitcheck" ]; then
-	wget wget -q "https://playit.gg/downloads/playit-0.8.1-beta" -O playit && chmod +x playit
+	echo 'Downloading Playit...'
+	wget -q https://playit.gg/downloads/playit-0.8.1-beta -O playit && chmod +x playit
+	echo 'Playit downloaded!'
+	sleep 2
+	clear
 fi
 
 #make launch file for pb server if it hasnt been made already
@@ -95,11 +109,13 @@ chmod +x playit
 fi
 
 clear
-echo 'Open a screen using the command "screen -S PingBypass", this should bring you to a brand new screen, now in this screen, type ./pb to launch the pingbypass, you should see 1.12.2 and Forge 1.12.2'
-echo ''
-echo 'There should be a number beside Forge 1.12.2 (It should be 0) If it's 0 then type "launch 0 -id" it should launch minecraft, if it's not 0, then type "launch 1 -id"'
-echo ''
-echo 'After that, ctrl + a + d to exit the screen, now you need to open a new screen by typing the command "screen -S Port", after opening a screen, type ./playit'
-echo ''
-echo 'You should see a link in your screen, copy it and paste it in your browser, get the domain and check its ip and port in mcsrvstat.us, change the internal ip and port.'
-ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
+cd ~ && git clone https://github.com/carrot69/keep-presence.git
+pip3 install pynput
+pip3 install bpytop
+./startAfk
+clear
+screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
+screen -S playit -d -m ./playit
+screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
+screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
+echo 'Your Internal ip & Port (Not your pingbypass IP)' && ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
