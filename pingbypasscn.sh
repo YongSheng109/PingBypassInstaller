@@ -119,6 +119,6 @@ screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar 
 screen -S playit -d -m ./playit
 screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
 screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
-notify-send $internalip
-notify-send $internalport
+notify-send -t 0 $internalip
+notify-send -t 0 $internalport
 screen -r playit
