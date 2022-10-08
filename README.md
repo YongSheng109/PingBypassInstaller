@@ -16,7 +16,7 @@ sh pingbypass.sh
 ## Usage-Chinese
 ```
 sudo su root -c 'cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/main/pingbypasscn.sh -o pingbypasscn.sh 
-sh pingbypasscn.sh'
+bash pingbypasscn.sh'
 ```
 
 ## Credits
