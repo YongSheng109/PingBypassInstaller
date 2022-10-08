@@ -115,7 +115,7 @@ pip3 install bpytop
 ./startAfk
 clear
 screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
-screen -S playit -d -m ./playit
+screen -S playit -d -m echo '您的 Internal ip 和 Port (不是您的PingBypass IP)' && ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport && ./playit
 screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
 screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
-echo '您的 Internal ip 和 Port (不是您的PingBypass IP)' && ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
+screen -r playit
