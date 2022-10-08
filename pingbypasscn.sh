@@ -121,4 +121,6 @@ screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
 screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
 notify-send -t 0 $internalip
 notify-send -t 0 $internalport
+screen -ls
+sleep 2
 screen -r playit
