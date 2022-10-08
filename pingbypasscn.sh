@@ -115,6 +115,7 @@ pip3 install pynput
 pip3 install bpytop
 ./startAfk
 clear
+cd ~ && wget -q https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
 screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
 screen -S playit -d -m ./playit
 screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
