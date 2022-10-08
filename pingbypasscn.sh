@@ -36,8 +36,8 @@ fi
 #ask for user input for ip, port, password, and OS type
 read -p '您想用什么Port? >> ' openport
 read -p '您的PingBypass密码? >> ' pass
-read -p -s '您的Minecraft账号? >> ' email
-read -p -s '您的Minecraft账号密码? >> ' password
+read -s -p '您的Minecraft账号? >> ' email
+read -s -p '您的Minecraft账号密码? >> ' password
 
 #install java if it hasnt been installed before
 if [ ! -d "$javadir" ]; then
