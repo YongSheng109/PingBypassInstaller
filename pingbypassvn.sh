@@ -14,7 +14,7 @@ launch=~pb
 clear
 
 #print the credits first, every installer ALWAYS has a stupid splash screen
-echo 'brought you to the HAV0X PingBypass Rewrite by zYongSheng_'
+echo 'Được tạo bởi HAV0X , được viết lại code bởi zYongSheng_ và được dịch bởi Thuy2y2c'
 echo  '                                                                           
 ██╗░░░██╗░█████╗░███╗░░██╗░██████╗░██████╗░██╗░░░██╗██████╗░░█████╗░░██████╗░██████╗
 ╚██╗░██╔╝██╔══██╗████╗░██║██╔════╝░██╔══██╗╚██╗░██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝
@@ -25,28 +25,28 @@ echo  '
 '
 sleep 2
 echo ''
-echo "如果您在登录 HeadlessMC 时遇到错误, 请重新运行脚本。"
+echo "Hãy chạy lại script này nếu bạn gặp lỗi HeadlessMc."
 sleep 1
 
 #make sure this is being run in the home dir and not anywhere else
 if [ $PWD != ~ ]; then
-	echo "此脚本必须在 ~ 运行, 如有问题, 请打出此指令 | cd ~"
+	echo "Vui lòng nhập lệnh | cd ~ | rồi chạy lại script. ( Vì bạn đang ở một danh mục khác, script cần phải được chạy ở danh mục home! )"
 	exit 0
 fi
 
 #ask for user input for ip, port, password, and OS type
-read -p '您想用什么Port? >> ' openport
-read -p '您的PingBypass密码? >> ' pass
-read -p '您的Minecraft账号? >> ' email
-read -p '您的Minecraft账号密码? >> ' password
+read -p 'Hãy nhập Internal Port (cổng port nỗi bộ) của bạn >> ' openport
+read -p 'Hãy nhập mật khẩu PingBypass của bạn >> ' pass
+read -p 'Hãy nhập mail tài khoản Minecraft của bạn (Microsoft) >> ' email
+read -p 'Hãy nhập mật khẩu tài khoản Minecraft của bạn (Microsoft) >> ' password
 internalport=$openport
 
 #install java if it hasnt been installed before
 if [ ! -d "$javadir" ]; then
-	echo '正在下载Java...'
+	echo 'Đang cài đặt Java...'
 	wget -q https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
-	echo 'Java下载完成!'
+	echo 'Đã thành công cài đặt Java!'
   clear
 fi
 
@@ -71,13 +71,13 @@ fi
 
 #download mods and hmc and move them to the proper places if not already downloaded
 if [ ! -d "$modsdir" ]; then
-	echo '正在下载模组...'
+	echo 'Đang cài đặt mods... (gói chính sửa mã gì đó tao chịu)'
 	mkdir ~/.minecraft/mods -p
 	wget -q https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.4/3arthh4ck-1.8.4-release.jar && mv 3arthh4ck-1.8.4-release.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
 	wget -q https://github.com/lordofwizard/mcserver/raw/main/startAfk
-	echo '模组下载完成!'
+	echo 'Đã thành công cài đặt xong mods!'
 	sleep 2
 	clear
 fi
@@ -93,9 +93,9 @@ fi
 
 #download playit.gg if it hasnt been already
 if [ ! -d "$playitcheck" ]; then
-	echo '正在下载Playit...'
+	echo 'Đang cài đặt Playit...'
 	wget -q https://playit.gg/downloads/playit-0.8.1-beta -O playit && chmod +x playit
-	echo 'Playit下载完成!'
+	echo 'Đã thành công cài đặt xong Playit!'
 	sleep 2
 	clear
 fi
