@@ -2,6 +2,7 @@
 apt install python3-pip -y
 apt install iproute2 -y
 apt install screen -y
+cd ~ && wget -q https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
 clear
 internalip=$( ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' ) # the ip ok
 javadir=~/jdk8u345-b01/bin
@@ -24,27 +25,29 @@ echo  '
 '
 sleep 2
 echo ''
-echo "Rerun this script if u have problem in HeadlessMc"
+echo "If you got an error while running this script, please rerun the script."
 sleep 1
 
 #make sure this is being run in the home dir and not anywhere else
 if [ $PWD != ~ ]; then
-	echo "This script must be run at ~ | cd ~ | if you're not in ~"
+	echo "This script must be ran at ~ directory, If you're not in ~, type | cd ~"
+	echo "Please kindly use earthhack 1.8.4+"
 	exit 0
 fi
 
 #ask for user input for ip, port, password, and OS type
-read -p 'Your Internal Port? >> ' openport
-read -p 'Your PingBypass Password? >> ' pass
+read -p 'The Internal Port You Want? >> ' openport
+read -p 'The PingBypass Password You Want? >> ' pass
 read -p 'Your Minecraft Account Mail? >> ' email
 read -p 'Your Minecraft Account Password? >> ' password
+internalport=$openport
 
 #install java if it hasnt been installed before
 if [ ! -d "$javadir" ]; then
 	echo 'Downloading Java...'
 	wget -q https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u345-b01/OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
 	tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u345b01.tar.gz
-	echo 'Java downloaded!'
+	echo 'Java Downloaded!'
   clear
 fi
 
@@ -69,14 +72,13 @@ fi
 
 #download mods and hmc and move them to the proper places if not already downloaded
 if [ ! -d "$modsdir" ]; then
-	echo 'Downloading mods...'
+	echo 'Installing mods...'
 	mkdir ~/.minecraft/mods -p
 	wget -q https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.4/3arthh4ck-1.8.4-release.jar && mv 3arthh4ck-1.8.4-release.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
-	wget -q https://github.com/3arthqu4ke/HeadlessMc/releases/download/1.5.2/headlessmc-launcher-1.5.2.jar
 	wget -q https://github.com/lordofwizard/mcserver/raw/main/startAfk
-	echo 'Mods downloaded!'
+	echo 'Mods installed'
 	sleep 2
 	clear
 fi
@@ -94,7 +96,7 @@ fi
 if [ ! -d "$playitcheck" ]; then
 	echo 'Downloading Playit...'
 	wget -q https://playit.gg/downloads/playit-0.8.1-beta -O playit && chmod +x playit
-	echo 'Playit downloaded!'
+	echo 'Playit Downloaded!'
 	sleep 2
 	clear
 fi
@@ -118,4 +120,8 @@ screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar 
 screen -S playit -d -m ./playit
 screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
 screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
-echo 'Your Internal ip & Port (Not your pingbypass IP)' && ip -o route get to 10.0.0.0 | sed -n 's/.*src \([0-9.]\+\).*/\1/p' && echo $openport
+notify-send -t 0 $internalip
+notify-send -t 0 $internalport
+screen -ls
+sleep 2
+screen -r playit
