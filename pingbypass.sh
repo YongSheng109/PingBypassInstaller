@@ -32,6 +32,8 @@ sleep 1
 if [ $PWD != ~ ]; then
 	echo "This script must be ran at ~ directory, If you're not in ~, type | cd ~"
 	echo "Please kindly use earthhack 1.8.4+"
+	echo "To prevent an insane minecraft account error, please go to https://account.live.com/activity and sign in your microsoft account"
+	echo "Made by zYongSheng_#1976"
 	exit 0
 fi
 
