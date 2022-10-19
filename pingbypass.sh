@@ -76,7 +76,7 @@ fi
 if [ ! -d "$modsdir" ]; then
 	echo 'Installing mods...'
 	mkdir ~/.minecraft/mods -p
-	wget -q https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.4/3arthh4ck-1.8.4-release.jar && mv 3arthh4ck-1.8.4-release.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.5/3arthh4ck-1.8.5-release.jar && mv 3arthh4ck-1.8.5-release.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
 	wget -q https://github.com/lordofwizard/mcserver/raw/main/startAfk
