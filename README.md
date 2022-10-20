@@ -9,8 +9,8 @@ https://www.youtube.com/channel/UCXkEsL3DzkVsYXdz7dbcBtg/
 
 ## Usage
 ```
-cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/main/pingbypass.sh -o pingbypass.sh 
-sh pingbypass.sh
+sudo su root -c 'cd ~ && curl https://raw.githubusercontent.com/YongSheng109/PingBypassInstaller/main/pingbypass.sh -o pingbypass.sh 
+sh pingbypass.sh'
 ```
 
 ## Usage-Chinese
