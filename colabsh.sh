@@ -94,7 +94,7 @@ fi
 #download playit.gg if it hasnt been already
 if [ ! -d "$playitcheck" ]; then
 	echo 'Downloading Playit...'
-	wget -q https://playit.gg/downloads/playit-0.8.1-beta -O playit && chmod +x playit
+	wget -q https://github.com/playit-cloud/playit-agent/releases/download/v0.9.3/playit-0.9.3 && chmod +x playit-0.9.3
 	echo 'Playit Downloaded!'
 	sleep 2
 	clear
@@ -113,7 +113,7 @@ cd ~ && git clone https://github.com/carrot69/keep-presence.git
 pip3 install pynput
 pip3 install bpytop
 screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
-screen -S playit -d -m ./playit
+screen -S playit -d -m ./playit-0.9.3
 screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
 screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
 screen -ls
