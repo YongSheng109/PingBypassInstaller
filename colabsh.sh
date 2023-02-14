@@ -36,7 +36,6 @@ if [ $PWD != ~ ]; then
 fi
 
 #ask for user input for ip, port, password, and OS type
-read -p 'The Internal Port You Want? >> ' openport
 read -p 'The PingBypass Password You Want? >> ' pass
 read -p 'Your Minecraft Account Mail? >> ' email
 read -p 'Your Minecraft Account Password? >> ' password
@@ -65,7 +64,7 @@ EOL
 	mkdir ~/.minecraft/earthhack -p && touch ~/.minecraft/earthhack/pingbypass.properties && cat >> ~/.minecraft/earthhack/pingbypass.properties<<EOL
 pb.server=true
 pb.ip=$internalip
-pb.port=$openport
+pb.port=6969
 pb.password=$pass
 EOL
 fi
