@@ -109,12 +109,9 @@ chmod +x pb
 chmod +x playit
 fi
 
-clear
 cd ~ && git clone https://github.com/carrot69/keep-presence.git
 pip3 install pynput
 pip3 install bpytop
-./startAfk
-clear
 screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 0 -id
 screen -S playit -d -m ./playit
 screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
