@@ -8,7 +8,7 @@ javadir=~/jdk8u345-b01/bin
 hmcdir=~/HeadlessMC
 modsdir=~/.minecraft/mods
 mcdir=~/.minecraft/versions/1.12.2
-playitcheck=~playit
+playitcheck=~playit-0.9.3
 launch=~pb
 clear
 
