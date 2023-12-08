@@ -1,11 +1,16 @@
 # Pingbypass Installer
-A script to install and configure 3arthh4ck Pingbypass as quickly as possible on NeverInstall or other linux vps that supports ldd 2.29 & 2gb+ ram.
 
-# Tutorial video [Outdated] | Make the vps and type the code 
-https://youtu.be/YwN65p2u-Kg
+## Free VPS List:
 
-# My channel
-https://www.youtube.com/channel/UCXkEsL3DzkVsYXdz7dbcBtg/
+### Requires Credit Card
+
+Amazon AWS Hosting (Free For 12 Months)
+Google Cloud (Free For 3 Months)
+
+### Does Not Require Credit Card
+
+Google Cloud Shell
+IBM Linux ONE
 
 ## Usage
 ```
