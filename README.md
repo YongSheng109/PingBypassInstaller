@@ -18,5 +18,5 @@ sudo su root -c 'cd ~ && curl https://raw.githubusercontent.com/Softwaren1/Pingb
 sh pingbypass.sh'
 ```
 ## Credits
-HAV0X1014 for making the 1st generation of this code
-YongSheng109 for making the 2nd generation on this code
+##### HAV0X1014 for making the 1st generation of this code
+##### YongSheng109 for making the 2nd generation on this code
