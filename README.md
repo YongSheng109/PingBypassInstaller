@@ -20,3 +20,4 @@ sh pingbypass.sh'
 ## Credits
 ##### HAV0X1014 - For making the 1st generation of this code
 ##### YongSheng109 - For making the 2nd generation on this code
+##### 3arthqu4ke - For Making Pingbypass
