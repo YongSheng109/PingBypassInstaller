@@ -4,15 +4,13 @@
 
 ### Requires Credit Card
 
-Amazon AWS Hosting (Free For 12 Months)
-
-Google Cloud (Free For 3 Months)
+#### Amazon AWS Hosting (Free For 12 Months)
+#### Google Cloud (Free For 3 Months)
 
 ### Does Not Require Credit Card
 
-Google Cloud Shell
-
-IBM Linux ONE
+#### Google Cloud Shell
+#### IBM Linux ONE
 
 ## Usage
 ```
