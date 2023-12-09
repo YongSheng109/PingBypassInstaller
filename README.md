@@ -14,7 +14,7 @@
 
 ## Usage
 ```
-sudo su root -c 'cd ~ && curl https://raw.githubusercontent.com/Softwaren1/Pingbypass-3/main/pingbypass.sh -o pingbypass.sh 
+sudo su root -c 'cd ~ && curl https://raw.githubusercontent.com/Softwaren1/Pingbypass-Auto/main/pingbypass.sh -o pingbypass.sh 
 sh pingbypass.sh'
 ```
 ## Credits
