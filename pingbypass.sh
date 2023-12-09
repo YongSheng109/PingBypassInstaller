@@ -14,15 +14,8 @@ launch=~pb
 clear
 
 #print the credits first, every installer ALWAYS has a stupid splash screen
-echo 'brought you to the HAV0X PingBypass Rewrite by zYongSheng_'
-echo  '                                                                           
-██╗░░░██╗░█████╗░███╗░░██╗░██████╗░██████╗░██╗░░░██╗██████╗░░█████╗░░██████╗░██████╗
-╚██╗░██╔╝██╔══██╗████╗░██║██╔════╝░██╔══██╗╚██╗░██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝
-░╚████╔╝░██║░░██║██╔██╗██║██║░░██╗░██████╦╝░╚████╔╝░██████╔╝███████║╚█████╗░╚█████╗░
-░░╚██╔╝░░██║░░██║██║╚████║██║░░╚██╗██╔══██╗░░╚██╔╝░░██╔═══╝░██╔══██║░╚═══██╗░╚═══██╗
-░░░██║░░░╚█████╔╝██║░╚███║╚██████╔╝██████╦╝░░░██║░░░██║░░░░░██║░░██║██████╔╝██████╔╝
-░░░╚═╝░░░░╚════╝░╚═╝░░╚══╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░░░░╚═╝░░╚═╝╚═════╝░╚═════╝░             
-'
+echo 'Welcome to Pingbypass setup'
+echo 'Thanks to HAV0X1014, YongSheng109 and 3arthqu4ke.'
 sleep 2
 echo ''
 echo "If you got an error while running this script, please rerun the script."
@@ -31,9 +24,9 @@ sleep 1
 #make sure this is being run in the home dir and not anywhere else
 if [ $PWD != ~ ]; then
 	echo "This script must be ran at ~ directory, If you're not in ~, type | cd ~"
-	echo "Please kindly use earthhack 1.8.4+"
+	echo "Please kindly use earthhack 1.8.8+"
 	echo "To prevent an insane minecraft account error, please go to https://account.live.com/activity and sign in your microsoft account"
-	echo "Made by zYongSheng_#1976"
+	echo "Made by SoftWaren"
 	exit 0
 fi
 
@@ -76,7 +69,7 @@ fi
 if [ ! -d "$modsdir" ]; then
 	echo 'Installing mods...'
 	mkdir ~/.minecraft/mods -p
-	wget -q https://github.com/3arthqu4ke/3arthh4ck/releases/download/1.8.5/3arthh4ck-1.8.5-release.jar && mv 3arthh4ck-1.8.5-release.jar ~/.minecraft/mods
+	wget -q https://github.com/3arthh4ckDevelopment/3arthh4ck-Client/releases/download/1.8.8/3arthh4ck-1.8.8-release.jar && mv 3arthh4ck-1.8.8-release.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HMC-Specifics/releases/download/1.0.3/HMC-Specifics-1.12.2-b2-full.jar && mv HMC-Specifics-1.12.2-b2-full.jar ~/.minecraft/mods
 	wget -q https://github.com/3arthqu4ke/HeadlessForge/releases/download/1.2.0/headlessforge-1.2.0.jar && mv headlessforge-1.2.0.jar ~/.minecraft/mods
 	wget -q https://github.com/lordofwizard/mcserver/raw/main/startAfk
@@ -97,7 +90,7 @@ fi
 #download playit.gg if it hasnt been already
 if [ ! -d "$playitcheck" ]; then
 	echo 'Downloading Playit...'
-	wget -q https://playit.gg/downloads/playit-0.8.1-beta -O playit && chmod +x playit
+	wget https://github.com/playit-cloud/playit-agent/releases/download/v0.15.0/playit-linux-amd64 && chmod +x playit-linux-amd64
 	echo 'Playit Downloaded!'
 	sleep 2
 	clear
