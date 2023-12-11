@@ -119,4 +119,5 @@ notify-send -t 0 $internalip
 notify-send -t 0 $internalport
 screen -ls
 sleep 2
+screen -r ./playit-linux-amd64
 ./playit-linux-amd64
