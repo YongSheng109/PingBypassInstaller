@@ -8,7 +8,7 @@ javadir=~/jdk1.8.0_321/bin
 hmcdir=~/HeadlessMC
 modsdir=~/.minecraft/mods
 mcdir=~/.minecraft/versions/1.12.2
-playitcheck=~playit
+playitcheck=~./playit-linux-amd64
 launch=~launchpb
 
 #print the credits first, every installer ALWAYS has a stupid splash screen
@@ -88,7 +88,7 @@ fi
 #download playit.gg if it hasnt been already
 if [ ! -d "$playitcheck" ]; then
 	echo 'Downloading Playit...'
-	wget https://github.com/playit-cloud/playit-agent/releases/download/v0.15.0/playit-linux-amd64 && chmod +x playit
+	wget https://github.com/playit-cloud/playit-agent/releases/download/v0.15.0/playit-linux-amd64 && chmod +x playit-linux-amd64
 	echo 'Playit Downloaded!'
 	sleep 2
 	clear
@@ -100,7 +100,7 @@ if [ ! -d "$launch" ]; then
 $javadir/java -jar headlessmc-launcher-1.5.2.jar --command $@
 EOL
 chmod +x launchpb
-chmod +x playit
+chmod +x playit-linux-amd64
 fi
 
 clear
@@ -110,13 +110,13 @@ pip3 install bpytop
 ./startAfk
 clear
 screen -S server -d -m jdk8u345-b01/bin/java -jar headlessmc-launcher-1.5.2.jar --command launch 1 -id
-screen -S ./playit-linux-amd64 -d -m ./playit
+screen -S ./playit-linux-amd64 -d -m ./playit-linux-amd64
 screen -S afk2 -d -m python3 /usr/local/lib/python3.9/dist-packages/bpytop.py
 screen -S afk -d -m python3 keep-presence/src/keep-presence.py --seconds 30 && cd ~
 notify-send -t 0 $internalip
 notify-send -t 0 $internalport
 screen -ls
 sleep 2
-screen -r ./playit
-./playit
-$echo 'type ./playit if playit windows does not launch'
+screen -r ./playit-linux-amd64
+./playit-linux-amd64
+$echo 'type ./playit-linux-amd64 if playit windows does not launch'
