@@ -121,3 +121,4 @@ screen -ls
 sleep 2
 screen -r ./playit-linux-amd64
 ./playit-linux-amd64
+$echo 'type ./playit-linux-amd64 if playit windows does not launch'
